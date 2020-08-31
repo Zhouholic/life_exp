@@ -37,3 +37,11 @@ sumdf %>%
   geom_point( )+
   theme_bw()
 ```
+
+Exercise: Calculate the average life expectancy (averaging over countries) in 2000. Add this to life_exp_analysis.Rmd. Commit your changes
+
+```{r }
+gapminder_unfiltered %>%
+  filter(year == 2000) %>%
+  summarise(average_le = mean(lifeExp))
+```
