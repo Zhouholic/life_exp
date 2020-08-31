@@ -15,13 +15,14 @@ Here, I re-examine the analysis of Oeppen and Vaupel (2002).
 
 # Analysis
 
-```{r }
+```{r,message=False}
 library(gapminder)
 library(tidyverse)
 
 gapminder_unfiltered %>%
   group_by(year ) %>%
   filter(lifeExp == max(lifeExp)) %>%
-  select(country, year, lifeExp)
-
+  ungroup() %>%
+  select(country, year, lifeExp) %>%
+  arrange(year)
 ```
