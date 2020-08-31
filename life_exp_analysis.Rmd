@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # Abstract
 
 Here, I re-examine the analysis of Oeppen and Vaupel (2002).
-.,
+
 # Analysis
 
 ```{r,message=False}
@@ -24,5 +24,16 @@ gapminder_unfiltered %>%
   filter(lifeExp == max(lifeExp)) %>%
   ungroup() %>%
   select(country, year, lifeExp) %>%
-  arrange(year)
+  arrange(year) -> sumdf
+sumdf
+```
+
+making plot
+```{r }
+library(ggplot2 )
+
+sumdf %>%
+  ggplot(mapping = aes(x= year, y=lifeExp ), color = country)+
+  geom_point( )+
+  theme_bw()
 ```
